@@ -7,6 +7,9 @@ import Footer from "@/components/Footer";
 import StickyCallBar from "@/components/StickyCallBar";
 import JsonLd from "@/components/JsonLd";
 import ThemeProvider from "@/components/ThemeProvider";
+import ConversionEvents from "@/components/ConversionEvents";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { localBusinessSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 
@@ -63,6 +66,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
           <StickyCallBar />
+          <ConversionEvents />
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

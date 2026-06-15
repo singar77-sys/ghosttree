@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { services, serviceAreas, site, faqs } from "@/lib/site";
+import { services, serviceAreas, serviceAreaTowns, site, faqs } from "@/lib/site";
 import { breadcrumbSchema } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
 import Faq from "@/components/Faq";
@@ -47,9 +47,14 @@ export default function MedinaPage() {
       <section className={`wrap ${styles.block}`}>
         <p className="kicker">Towns we serve</p>
         <ul className={styles.chips}>
-          {serviceAreas.map((a) => (
-            <li key={a}>{a}</li>
-          ))}
+          {serviceAreas.map((a) => {
+            const town = serviceAreaTowns.find((t) => t.name === a);
+            return (
+              <li key={a}>
+                {town ? <Link href={`/tree-service/${town.slug}/`}>{a}</Link> : a}
+              </li>
+            );
+          })}
         </ul>
       </section>
 

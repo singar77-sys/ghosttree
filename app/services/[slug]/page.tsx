@@ -97,6 +97,49 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <p>{service.details}</p>
       </section>
 
+      <section className={`wrap ${styles.process}`} aria-label="How the job runs">
+        <div className={styles.secHead}>
+          <p className="kicker">How the job runs</p>
+          <h2>Start to finish, no surprises.</h2>
+        </div>
+        <ol className={styles.steps}>
+          {service.process.map((p, i) => (
+            <li key={p.step} className={styles.step}>
+              <span className={`mono ${styles.stepNum}`}>{String(i + 1).padStart(2, "0")}{" //"}</span>
+              <div className={styles.stepBody}>
+                <h3 className={styles.stepLabel}>{p.step}</h3>
+                <p className={styles.stepDetail}>{p.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className={`wrap ${styles.lists}`}>
+        <div className={styles.col}>
+          <div className={styles.secHead}>
+            <p className="kicker">What&apos;s included</p>
+            <h2>What you get.</h2>
+          </div>
+          <ul className={styles.included}>
+            {service.included.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div className={styles.col}>
+          <div className={styles.secHead}>
+            <p className="kicker">When to call</p>
+            <h2>Signs it&apos;s time.</h2>
+          </div>
+          <ul className={styles.when}>
+            {service.whenToCall.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {service.image2 && (
         <section className={`always-dark ${styles.band}`} aria-label="On the job">
           <Image
@@ -122,7 +165,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       </section>
 
       <RelatedServices currentSlug={service.slug} />
-      <Faq items={faqs} />
+      <Faq items={[...service.serviceFaqs, ...faqs]} />
       <AfterYouCall />
       <QuoteBand kicker="Get this handled" heading={`Need ${service.title.toLowerCase()} in Medina County?`} />
     </>

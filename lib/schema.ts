@@ -1,7 +1,7 @@
 // JSON-LD builders. The answer-engine layer: machine-readable truth about the business.
 // Render with <script type="application/ld+json"> (see components/JsonLd.tsx).
 
-import { site, services, reviewSummary, faqs, type Service } from "@/lib/site";
+import { site, services, reviewSummary, faqs, type Service, type ServiceAreaTown } from "@/lib/site";
 
 const BUSINESS_ID = `${site.url}/#business`;
 
@@ -71,6 +71,19 @@ export function serviceSchema(service: Service) {
     provider: { "@id": BUSINESS_ID },
     areaServed,
     url: `${site.url}/services/${service.slug}/`
+  };
+}
+
+export function townServiceSchema(town: ServiceAreaTown) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `Tree Service in ${town.name}, OH`,
+    serviceType: "Tree Service",
+    description: town.intro,
+    provider: { "@id": BUSINESS_ID },
+    areaServed: { "@type": "City", name: `${town.name}, OH` },
+    url: abs(`/tree-service/${town.slug}/`)
   };
 }
 

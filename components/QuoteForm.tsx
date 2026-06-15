@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { upload } from "@vercel/blob/client";
+import { track } from "@vercel/analytics";
 import { services, site } from "@/lib/site";
 import styles from "./QuoteForm.module.css";
 
@@ -10,6 +11,11 @@ type Status = "idle" | "sending" | "ok" | "error" | "callus";
 export default function QuoteForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  // Time-on-form baseline, set after mount (Date.now() is impure — never called during render).
+  const loadedAt = useRef(0);
+  useEffect(() => {
+    loadedAt.current = Date.now();
+  }, []);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -39,7 +45,10 @@ export default function QuoteForm() {
       address: String(fd.get("address") || ""),
       service: String(fd.get("service") || ""),
       details: String(fd.get("details") || ""),
-      photos: photoUrls
+      photos: photoUrls,
+      // Spam signals: honeypot field (should stay empty) + time-on-form.
+      company: String(fd.get("company") || ""),
+      elapsedMs: Date.now() - loadedAt.current
     };
 
     try {
@@ -51,6 +60,8 @@ export default function QuoteForm() {
       const json = await res.json();
       if (json.ok) {
         setStatus("ok");
+        // Conversion event; safe no-op when analytics is disabled.
+        track("quote_submitted");
         form.reset();
       } else if (json.configured === false) {
         setStatus("callus");
@@ -92,6 +103,17 @@ export default function QuoteForm() {
 
   return (
     <form className={styles.form} onSubmit={onSubmit} noValidate>
+      {/* Honeypot: hidden from sighted users, screen readers, and keyboard nav.
+          Bots that auto-fill every field will populate it; real users can't. */}
+      <span aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+        <input
+          name="company"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          defaultValue=""
+        />
+      </span>
       <div className={styles.row}>
         <label className={styles.field}>
           <span>Name *</span>

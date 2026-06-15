@@ -9,6 +9,9 @@ export default function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
+    // Mount guard: next-themes' resolvedTheme is only correct after hydration,
+    // so this one-time setState in effect is intentional (avoids a theme flash).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
