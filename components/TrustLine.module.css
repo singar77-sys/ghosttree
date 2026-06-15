@@ -1,0 +1,12 @@
+.trust {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-13);
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.center {
+  text-align: center;
+}
+.stars {
+  color: var(--accent);
+}

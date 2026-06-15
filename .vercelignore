@@ -1,0 +1,8 @@
+# Source JPGs for the optimized WebP — not served at runtime, kept out of the deploy
+# (saves ~35MB and prevents unoptimized duplicates from being crawled in Google Images).
+public/images/originals/
+
+# Local-only working files — never needed in the deploy.
+.superpowers/
+.omc/
+docs/

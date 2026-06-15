@@ -1,0 +1,15 @@
+.cta {
+  text-align: center;
+  padding-block: var(--sp-6);
+  border-top: 1px solid var(--line);
+}
+.h2 {
+  margin-top: var(--sp-1);
+}
+.ctas {
+  display: flex;
+  gap: var(--sp-2);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--sp-4);
+}

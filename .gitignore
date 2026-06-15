@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# next.js / build output
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+.turbo/
+
+# vercel
+.vercel/
+
+# env / secrets
+.env
+.env.*
+
+# legacy / local working files
+.astro/
+artifacts/
+.omc/
+.superpowers/
+.claude/

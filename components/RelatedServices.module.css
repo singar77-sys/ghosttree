@@ -1,0 +1,27 @@
+.wrap {
+  padding-block: var(--sp-5);
+  border-top: 1px solid var(--line);
+}
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+}
+.list a {
+  color: var(--fg);
+  font-size: var(--fs-20);
+}
+.list a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.hub {
+  color: var(--accent) !important;
+  font-weight: 700;
+}
+@media (max-width: 600px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}

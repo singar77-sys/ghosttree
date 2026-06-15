@@ -1,0 +1,85 @@
+.form {
+  display: grid;
+  gap: var(--sp-3);
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field span {
+  color: var(--muted);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+.field input,
+.field select,
+.field textarea {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--fg);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--fs-16);
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.field textarea {
+  resize: vertical;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--faint);
+  opacity: 1;
+}
+.file {
+  color: var(--muted) !important;
+  font-size: var(--fs-13) !important;
+}
+.note {
+  color: var(--muted);
+  font-size: var(--fs-13);
+}
+.note a,
+.err a {
+  color: var(--accent);
+}
+.err {
+  color: var(--fg);
+  font-weight: 700;
+  border-left: 2px solid var(--fg);
+  padding-left: 10px;
+  font-size: var(--fs-13);
+}
+.done {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+}
+.done h3 {
+  margin: var(--sp-1) 0;
+}
+.done p {
+  color: var(--muted);
+}
+.done a:not(.btn) {
+  color: var(--accent);
+}
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

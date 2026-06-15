@@ -1,0 +1,35 @@
+.bar {
+  display: none;
+}
+@media (max-width: 760px) {
+  .bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: flex;
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgb(var(--bg-rgb) / 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line);
+  }
+  .call {
+    flex: 1;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 700;
+    text-align: center;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+  }
+  .quote {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--line);
+    padding: 13px 16px;
+    border-radius: 10px;
+  }
+}

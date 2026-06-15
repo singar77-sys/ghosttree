@@ -1,0 +1,166 @@
+/* Ghost Tree Service — design tokens + base.
+   The invisible system: phi-informed type scale (1.25), Fibonacci spacing, one easing curve.
+   Monochrome: every color derives from two channel tokens (--bg-rgb / --fg-rgb), flipped by
+   [data-theme="dark"]; --accent aliases --fg as the future color hook.
+   Component-specific styles live in CSS Modules. This file is tokens + base + shared utilities. */
+
+:root {
+  color-scheme: light;
+  --bg-rgb: 255 255 255;
+  --fg-rgb: 0 0 0;
+
+  /* Type scale — 1.25 modular (rem). Khand (display) breaks past the top as the deliberate outlier. */
+  --fs-13: 0.8125rem;
+  --fs-16: 1rem;
+  --fs-20: 1.25rem;
+  --fs-25: 1.5625rem;
+  --fs-31: 1.953rem;
+  --fs-39: 2.441rem;
+  --fs-49: 3.052rem;
+
+  /* Spacing — Fibonacci */
+  --sp-1: 8px;
+  --sp-2: 13px;
+  --sp-3: 21px;
+  --sp-4: 34px;
+  --sp-5: 55px;
+  --sp-6: 89px;
+
+  --radius: 14px;
+  --radius-lg: 20px;
+  --dur: 300ms;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --container: 1120px;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-rgb: 0 0 0;
+  --fg-rgb: 255 255 255;
+}
+
+/* Derived tokens — declared at every theming scope, because custom properties
+   inherit pre-resolved: each scope must recompute them from its own channels. */
+:root,
+.always-dark {
+  --bg: rgb(var(--bg-rgb));
+  --fg: rgb(var(--fg-rgb));
+  --accent: var(--fg); /* future color hook */
+  --muted: rgb(var(--fg-rgb) / 0.6);
+  --faint: rgb(var(--fg-rgb) / 0.4);
+  --line: rgb(var(--fg-rgb) / 0.13);
+  --surface: rgb(var(--fg-rgb) / 0.04);
+  --surface-2: rgb(var(--fg-rgb) / 0.07);
+}
+
+/* Always-dark zone — a region that keeps the dark scheme in both themes (home hero).
+   color is re-anchored here because descendants without their own color declaration
+   would otherwise inherit the computed page color straight through the zone. */
+.always-dark {
+  color-scheme: dark;
+  --bg-rgb: 0 0 0;
+  --fg-rgb: 255 255 255;
+  color: var(--fg);
+}
+
+/* Ghosted sections — image texture behind content, washed toward the scheme background. */
+.ghosted { position: relative; overflow: hidden; }
+.ghost-media { position: absolute; inset: 0; z-index: 0; }
+.ghost-img { object-fit: cover; }
+.ghost-scrim { position: absolute; inset: 0; background: rgb(var(--bg-rgb) / 0.85); }
+.ghost-fore { position: relative; z-index: 1; }
+
+/* Brand — Ghost Tree logo lockup, theme-swapped: dark-ink logo on light, white logo on dark.
+   Keyed on html[data-theme] (set before paint by next-themes) so only the active variant is fetched. */
+.brand-logo {
+  display: inline-block;
+  flex-shrink: 0;
+  aspect-ratio: 3 / 1;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+[data-theme="light"] .brand-logo { background-image: url("/images/brand/ghost-logo-dark.png"); }
+[data-theme="dark"] .brand-logo { background-image: url("/images/brand/ghost-logo-light.png"); }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  /* never flat: faint monochrome glows, masked toward center */
+  background-image:
+    radial-gradient(circle at 18% 12%, rgb(var(--fg-rgb) / 0.04), transparent 40%),
+    radial-gradient(circle at 84% 78%, rgb(var(--fg-rgb) / 0.03), transparent 42%);
+  background-attachment: fixed;
+  color: var(--fg);
+  font-family: var(--font-body), Georgia, "Times New Roman", serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), Impact, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 0.96;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+h1 { font-size: clamp(2.5rem, 7vw, 4.6rem); }
+h2 { font-size: clamp(1.75rem, 4vw, var(--fs-39)); }
+h3 { font-size: var(--fs-20); }
+
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+img, svg, video { max-width: 100%; display: block; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+::selection { background: var(--fg); color: var(--bg); }
+
+/* Shared utilities */
+.wrap { width: min(100% - (2 * var(--sp-4)), var(--container)); margin-inline: auto; }
+.kicker {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--fs-13);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.mono { font-family: var(--font-mono), ui-monospace, monospace; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 var(--sp-3);
+  border-radius: 10px;
+  font-family: var(--font-body), Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: var(--fs-16);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+.btn-call { background: var(--accent); color: var(--bg); }
+.btn-call:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgb(var(--fg-rgb) / 0.22); opacity: 0.88; }
+.btn-quote { background: transparent; color: var(--fg); border-color: var(--line); }
+.btn-quote:hover { border-color: var(--accent); color: var(--accent); background: var(--surface); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
