@@ -47,7 +47,7 @@ export default function AboutPage() {
         </div>
         <p>
           That is where &ldquo;Ghost&rdquo; comes from. Low-impact equipment, careful rigging, and cleanup so thorough
-          the only sign we were on the property is that the dangerous tree is gone. Hauled, ground, raked. Like we were
+          the only sign we were on the property is that the dangerous tree is gone. Hauled, chipped, raked. Like we were
           never there.
         </p>
       </section>
@@ -76,6 +76,18 @@ export default function AboutPage() {
             />
           </figure>
         ))}
+      </section>
+
+      <section className={`wrap ${styles.story}`}>
+        <div>
+          <p className="kicker">Who runs it</p>
+          <h2>Family owned &amp; operated.</h2>
+        </div>
+        <p>
+          Ghost Tree Service is a family owned and operated crew based in Seville, serving Medina County and Northeast
+          Ohio. You&rsquo;re hiring the family whose name is on the truck, not a call center routing you to a stranger.
+          That&rsquo;s why the property gets treated like our own and the cleanup is never someone else&rsquo;s problem.
+        </p>
       </section>
 
       <section className={`wrap ${styles.story}`}>

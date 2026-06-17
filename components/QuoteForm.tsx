@@ -11,6 +11,7 @@ type Status = "idle" | "sending" | "ok" | "error" | "callus";
 export default function QuoteForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const [sentEmail, setSentEmail] = useState("");
   // Time-on-form baseline, set after mount (Date.now() is impure — never called during render).
   const loadedAt = useRef(0);
   useEffect(() => {
@@ -50,6 +51,8 @@ export default function QuoteForm() {
       company: String(fd.get("company") || ""),
       elapsedMs: Date.now() - loadedAt.current
     };
+    // Remember the email so the success view can point the visitor at their inbox.
+    setSentEmail(payload.email);
 
     try {
       const res = await fetch("/api/quote", {
@@ -79,7 +82,14 @@ export default function QuoteForm() {
     return (
       <div className={styles.done}>
         <p className="kicker">Got it</p>
-        <h3>Request received. We&rsquo;ll call you back.</h3>
+        {sentEmail ? (
+          <h3>
+            Request received — keep an eye on {sentEmail} for a confirmation, and
+            we&rsquo;ll call you back too.
+          </h3>
+        ) : (
+          <h3>Request received. We&rsquo;ll call you back.</h3>
+        )}
         <p>
           Can&rsquo;t wait? Call{" "}
           <a href={site.phoneHref}>{site.phone}</a> now. We answer 24/7.

@@ -24,10 +24,12 @@ export const site = {
     country: "US"
   },
   hours: "24/7 emergency response",
+  familyOwned: true,
+  familyLine: "Family owned & operated",
   tagline: "Low-impact tree service for Medina County and Northeast Ohio.",
   // The brand promise: heavy iron + clean disappearance (low-impact + spotless cleanup).
   description:
-    "Ghost Tree Service provides 24/7 emergency tree removal, tree removals, trimming and pruning, storm damage cleanup, lot clearing, and utility and commercial tree work across Medina County and Northeast Ohio. Heavy enough for the crane jobs, clean enough you would never know we were there."
+    "Ghost Tree Service is a family owned and operated company providing 24/7 emergency tree removal, tree removals, trimming and pruning, storm damage cleanup, lot clearing, and utility and commercial tree work across Medina County and Northeast Ohio. Heavy enough for the crane jobs, clean enough you would never know we were there."
 } as const;
 
 export const navItems = [
@@ -38,6 +40,9 @@ export const navItems = [
   { label: "Quote", href: "/quote/" }
 ] as const;
 
+// Flat list consumed by the Footer slice, the home-page service-area band, and the
+// Medina County chips. Kept as a representative subset of the full county coverage
+// below — every town here also appears in serviceAreasByCounty.
 export const serviceAreas = [
   "Medina",
   "Brunswick",
@@ -56,6 +61,49 @@ export const serviceAreas = [
   "Rittman",
   "Wooster"
 ] as const;
+
+// Full, owner-confirmed service-area coverage grouped by county. This is the
+// authoritative town list; serviceAreas (above) is a flat subset for compact UI.
+export const serviceAreasByCounty = {
+  "Medina County": [
+    "Brunswick",
+    "Chippewa Lake",
+    "Lodi",
+    "Medina",
+    "Seville",
+    "Spencer",
+    "Wadsworth",
+    "Westfield Center"
+  ],
+  "Summit County": [
+    "Akron",
+    "Barberton",
+    "Bath",
+    "Boston Heights",
+    "Clinton",
+    "Copley",
+    "Cuyahoga Falls",
+    "Fairlawn",
+    "Green",
+    "Hudson",
+    "Macedonia",
+    "Munroe Falls",
+    "Northfield",
+    "Norton",
+    "Peninsula",
+    "Portage Lakes",
+    "Richfield",
+    "Silver Lake",
+    "Stow",
+    "Twinsburg",
+    "Uniontown"
+  ],
+  "Portage County": ["Brimfield", "Kent"],
+  "Wayne County": ["Rittman", "Wooster"]
+} as const;
+
+export const serviceAreaNote =
+  "We also travel to adjacent counties (Cuyahoga, Lorain, Stark) for larger assignments. References available on request.";
 
 export type ProcessStep = { step: string; detail: string };
 export type ServiceFaq = { q: string; a: string };
@@ -87,8 +135,8 @@ export const services: Service[] = [
     slug: "emergency-tree-removal",
     eyebrow: "Storm response",
     image: "/images/optimized/ghost-tree-service-emergency-tree-service-medina-oh.webp",
-    image2: "/images/optimized/ghost-tree-service-winter-storm-response-medina-oh.webp",
-    image2Alt: "Storm-response truck pushing through a Northeast Ohio blizzard — 24/7 conditions",
+    image2: "/images/optimized/ghost-tree-service-shreeve-pine-crane-storm-job-medina-oh.webp",
+    image2Alt: "Crane lifting a storm-toppled pine off a property during an emergency call",
     summary:
       "Fast response when wind, rain, or a split trunk puts a home, driveway, utility line, or business at risk.",
     details:
@@ -134,8 +182,8 @@ export const services: Service[] = [
     slug: "tree-removal",
     eyebrow: "Controlled takedowns",
     image: "/images/optimized/ghost-tree-service-tree-removal-crane-medina-oh.webp",
-    image2: "/images/optimized/ghost-tree-service-lawn-stump-grinding-medina-oh.webp",
-    image2Alt: "Stump grinding after a removal — the stump goes too, ground flush with the lawn",
+    image2: "/images/optimized/ghost-tree-service-large-splitting-oak-crane-job-medina-oh.webp",
+    image2Alt: "Crane lifting a sectioned trunk off a splitting oak during a controlled removal",
     summary:
       "Dead, leaning, or too close to the house. We take it down clean and crane it out when the yard is tight.",
     details:
@@ -145,14 +193,14 @@ export const services: Service[] = [
       { step: "On-site estimate", detail: "We walk the tree, check access and what's underneath, and give you a firm written price — no guessing from the curb." },
       { step: "Plan the drop", detail: "We map fall direction, rope paths, and crane setup if the yard is tight, then protect beds, fences, and the lawn." },
       { step: "Sectional takedown", detail: "The tree comes down in measured pieces, lowered or craned out so nothing slams the ground or your turf." },
-      { step: "Stump and grind", detail: "We grind the stump flush on request and chase the roots back so you can plant, pave, or sod over it." },
+      { step: "Cut low and clear roots", detail: "We cut the trunk low to the ground and clear the surface so the spot is tidy and ready for whatever comes next." },
       { step: "Haul and rake clean", detail: "Wood, brush, and chips are removed and the work area is raked so it looks like the tree was never there." }
     ],
     included: [
-      "Written on-site or photo-based estimate before any work starts",
+      "Written on-site estimate before any work starts",
       "Full removal by rope or crane, sized to your access and clearances",
       "Property protection for beds, hardscape, and lawn during the drop",
-      "Optional stump grinding flush to grade with root chase-out",
+      "Trunk cut low to grade with the surface cleared",
       "Complete wood and debris haul-off, site raked clean"
     ],
     whenToCall: [
@@ -168,8 +216,8 @@ export const services: Service[] = [
         a: "Not usually. Once we've walked the job and you've approved the written price, most removals are done with you away. We text before and after, and there's nothing to clean up when you get back."
       },
       {
-        q: "Does removal include the stump?",
-        a: "Stump grinding is quoted as an add-on so you only pay for what you want. We grind flush to grade and chase the surface roots so the spot is ready to sod, plant, or pave."
+        q: "Do you grind stumps?",
+        a: "We don't grind stumps in-house, but we work with a trusted local stump-grinding company and can connect you."
       },
       {
         q: "My tree is right next to the house — can you still get it out?",
@@ -187,8 +235,8 @@ export const services: Service[] = [
     summary:
       "Dead limbs over the driveway, branches on the roof, growth into the lines. Cut back for safety and shape.",
     details:
-      "Pruning work removes damaged, dead, low, or overgrown branches while preserving a balanced structure where possible, with attention to clearance near roofs and power lines.",
-    keywords: ["tree trimming Medina OH", "tree pruning Medina County", "tree branch removal Ohio"],
+      "Pruning work removes damaged, dead, low, or overgrown branches while preserving a balanced structure where possible, with attention to clearance near roofs and power lines. For trees worth saving, we also install cables and braces to support weak unions, heavy or overextended limbs, and heritage trees instead of removing them.",
+    keywords: ["tree trimming Medina OH", "tree pruning Medina County", "tree cabling and bracing Ohio"],
     process: [
       { step: "Read the canopy", detail: "We look at structure, deadwood, and clearance problems, then agree on how much to take and where to stop." },
       { step: "Set up off the structure", detail: "Boom lift or climbing line, with rope rigging so cut limbs are lowered clear of the roof, lines, and beds." },
@@ -199,6 +247,7 @@ export const services: Service[] = [
       "Deadwood, broken, and crossing-limb removal",
       "Roof, siding, and driveway clearance pruning",
       "Clearance cuts back from service drops and structures",
+      "Cable and brace installation to support weak unions and heavy limbs",
       "Proper branch-collar cuts that protect the tree's health",
       "Brush chipping and a raked-clean work area"
     ],
@@ -221,6 +270,14 @@ export const services: Service[] = [
       {
         q: "Can you just clear the branches off my roof and lines?",
         a: "Yes. Clearance pruning for roofs, gutters, and the service drop to your house is one of our most common calls, and we keep enough structure that the tree still looks intentional."
+      },
+      {
+        q: "Do you top trees?",
+        a: "No. Topping (cutting limbs back to stubs) causes decay, weak hazardous regrowth, and stress — we do proper crown reduction and thinning instead."
+      },
+      {
+        q: "My tree has a weak split or a heavy limb — can it be saved instead of removed?",
+        a: "Often, yes. We install cables and braces to support weak unions, heavy or overextended limbs, and heritage trees, which can keep a structurally questionable tree standing safely instead of taking it down."
       }
     ]
   },
@@ -232,20 +289,20 @@ export const services: Service[] = [
     image2: "/images/optimized/ghost-tree-service-storm-split-willow-limbs-medina-oh.webp",
     image2Alt: "Storm-split willow with broken limbs exposed, waiting on cleanup",
     summary:
-      "After the storm: downed trees, hung limbs, and debris cleared fast. Hauled, ground, and raked clean.",
+      "After the storm: downed trees, hung limbs, and debris cleared fast. Hauled, chipped, and raked clean.",
     details:
-      "After high wind or ice, the crew stabilizes hazards first, then removes downed and hanging material, grinds what remains, and clears the debris so the property is usable again.",
+      "After high wind or ice, the crew stabilizes hazards first, then removes downed and hanging material, cuts up what's left, and clears the debris so the property is usable again.",
     keywords: ["storm damage cleanup Medina OH", "storm damage tree removal Medina County", "fallen tree removal Ohio"],
     process: [
       { step: "Stabilize hazards first", detail: "Hung limbs, leaners, and anything under tension get dealt with before general cleanup so no one gets hurt." },
       { step: "Clear what's down", detail: "Fallen trunks and limbs are cut, dragged, and removed, starting with whatever is blocking access or sitting on structures." },
-      { step: "Grind and chip", detail: "Broken stumps and snapped sections are ground out and the brush is chipped on site." },
+      { step: "Cut and chip", detail: "Snapped sections and broken limbs are cut down to size and the brush is chipped on site." },
       { step: "Rake and restore", detail: "We rake the debris field, pick up the small stuff, and leave the property usable again." }
     ],
     included: [
       "Priority handling of hung-up limbs and trees under tension",
       "Removal of downed trunks, branches, and storm debris",
-      "Grinding of broken stumps and snapped trunk sections",
+      "Cutting down of snapped trunk sections and broken limbs",
       "Brush chipping and full debris haul-off",
       "Insurance-ready photos and scope documentation on request"
     ],
@@ -279,20 +336,21 @@ export const services: Service[] = [
     image2: "/images/optimized/ghost-tree-service-forestry-harvester-felling-medina-oh.webp",
     image2Alt: "Mechanized felling on a clearing job — pine coming down clean",
     summary:
-      "Brush, scrub, and trees cleared for building, access, or resale. Ground prepped at any scale.",
+      "Brush, scrub, and trees cleared for building, access, or resale — including rotary brush hogging of overgrown fields. Ground prepped at any scale.",
     details:
-      "Lot clearing starts with a practical site review so the right trees, brush, and obstacles are removed before construction or property work begins.",
-    keywords: ["lot clearing Medina OH", "land clearing Medina County", "tree clearing service Ohio"],
+      "Lot clearing starts with a practical site review so the right trees, brush, and obstacles are removed before construction or property work begins. For overgrown fields, fence lines, and stands of light saplings, we run a rotary brush hog to mow it all back to usable ground.",
+    keywords: ["lot clearing Medina OH", "land clearing Medina County", "brush hogging Ohio"],
     process: [
       { step: "Walk the site", detail: "We mark what stays, what goes, and where equipment can reach, accounting for slope, wet ground, and property lines." },
       { step: "Drop and pile", detail: "Trees and brush come down and get staged in work zones, keeping the cleared edge clean against what you're keeping." },
-      { step: "Process the material", detail: "We chip brush, buck logs, and grind stumps based on whether you want it hauled, mulched, or left for firewood." },
+      { step: "Brush hog the overgrowth", detail: "Overgrown brush, fields, and light saplings get cut down with a rotary brush hog so the ground underneath is usable again." },
+      { step: "Process the material", detail: "We chip brush and buck logs based on whether you want it hauled, mulched, or left for firewood." },
       { step: "Grade-ready cleanup", detail: "The lot is cleared and raked back so it's ready for a builder, excavator, or your own next step." }
     ],
     included: [
       "Site walk to scope access, terrain, and what to preserve",
       "Selective or full clearing of trees, brush, and scrub",
-      "Stump grinding or removal to suit the next phase of work",
+      "Rotary brush hogging of overgrown brush, fields, and light saplings",
       "Material processed your way — hauled, mulched, or stacked",
       "Cleared area raked back and left ready for grading"
     ],
@@ -614,7 +672,7 @@ export const faqs = [
   },
   {
     q: "What does tree removal cost?",
-    a: "Cost depends on the tree's size, location, access, and whether a crane is needed. We give a clear price up front, on site or fast from photos you text us, with no surprises."
+    a: "Cost depends on the tree's size, location, access, and whether a crane is needed. We give a clear price up front, on site, with no surprises."
   },
   {
     q: "Are you insured?",
@@ -622,7 +680,7 @@ export const faqs = [
   },
   {
     q: "What is low-impact tree service?",
-    a: "It means protecting your property while we work and leaving the site clean. We haul, grind, and rake so the hazard is gone and the yard looks like we were never there."
+    a: "It means protecting your property while we work and leaving the site clean. We haul, chip, and rake so the hazard is gone and the yard looks like we were never there."
   },
   {
     q: "How fast can you respond after a storm?",

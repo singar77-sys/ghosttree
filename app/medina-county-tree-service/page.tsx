@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { services, serviceAreas, serviceAreaTowns, site, faqs } from "@/lib/site";
+import { services, serviceAreasByCounty, serviceAreaNote, serviceAreaTowns, site, faqs } from "@/lib/site";
 import { breadcrumbSchema } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
 import Faq from "@/components/Faq";
@@ -46,16 +46,22 @@ export default function MedinaPage() {
 
       <section className={`wrap ${styles.block}`}>
         <p className="kicker">Towns we serve</p>
-        <ul className={styles.chips}>
-          {serviceAreas.map((a) => {
-            const town = serviceAreaTowns.find((t) => t.name === a);
-            return (
-              <li key={a}>
-                {town ? <Link href={`/tree-service/${town.slug}/`}>{a}</Link> : a}
-              </li>
-            );
-          })}
-        </ul>
+        {Object.entries(serviceAreasByCounty).map(([county, towns]) => (
+          <div key={county} className={styles.county}>
+            <h3 className={`kicker ${styles.countyName}`}>{county}</h3>
+            <ul className={styles.chips}>
+              {towns.map((townName) => {
+                const town = serviceAreaTowns.find((t) => t.name === townName);
+                return (
+                  <li key={townName}>
+                    {town ? <Link href={`/tree-service/${town.slug}/`}>{townName}</Link> : townName}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+        <p className={styles.note}>{serviceAreaNote}</p>
       </section>
 
       <section className={`always-dark ${styles.band}`} aria-label="Working in Medina County">

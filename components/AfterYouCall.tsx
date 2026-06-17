@@ -11,7 +11,7 @@ const steps = [
   {
     lbl: "The read",
     h: "We assess. You get a clear price.",
-    p: "On site, or fast from photos you text us. No mystery numbers, no surprises later."
+    p: "On site, with a clear written price. No mystery numbers, no surprises later."
   },
   {
     lbl: "The plan",
@@ -56,7 +56,7 @@ export default function AfterYouCall() {
               <span className={`mono ${styles.lbl}`}>The disappearance</span>
               <h3 className={styles.ghostH}>We leave like a ghost.</h3>
               <p>
-                Hauled, ground, raked. The hazard is gone and the property looks like we were never here. That&rsquo;s
+                Hauled, chipped, raked. The hazard is gone and the property looks like we were never here. That&rsquo;s
                 the whole promise.
               </p>
               <div className={styles.sig}>

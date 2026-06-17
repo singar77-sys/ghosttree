@@ -8,8 +8,8 @@ const BUSINESS_ID = `${site.url}/#business`;
 const areaServed = [
   "Medina County, OH",
   "Summit County, OH",
-  "Wayne County, OH",
   "Portage County, OH",
+  "Wayne County, OH",
   "Northeast Ohio"
 ];
 

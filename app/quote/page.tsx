@@ -21,7 +21,7 @@ export default function QuotePage() {
           <h1 className={styles.h1}>Tell us about the tree.</h1>
           <p className={styles.lead}>
             Send the details and a few photos. We&rsquo;ll call you back with a clear price. Free, no obligation.
-            Storm emergency? Don&rsquo;t wait on a form. Call <a href={site.phoneHref}>{site.phone}</a>, 24/7.
+            Storm emergency? Don&rsquo;t wait on a form. Call or text <a href={site.phoneHref}>{site.phone}</a>, 24/7.
           </p>
           <a href={site.phoneHref} className="btn btn-call">
             Call 24/7 · {site.phone}

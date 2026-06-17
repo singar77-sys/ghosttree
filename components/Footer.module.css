@@ -27,6 +27,13 @@
   max-width: 36ch;
   font-size: 0.95rem;
 }
+.familyLine {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-13);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 .contact {
   display: flex;
   flex-direction: column;
@@ -37,6 +44,20 @@
 .contact a:hover {
   color: var(--accent);
   text-decoration: underline;
+}
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--sp-2);
+  font-weight: 600;
+}
+.socialIcon {
+  flex: none;
+  color: var(--muted);
+}
+.social:hover .socialIcon {
+  color: var(--accent);
 }
 .nap {
   color: var(--muted);

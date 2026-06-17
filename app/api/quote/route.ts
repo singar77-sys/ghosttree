@@ -70,6 +70,22 @@ export async function POST(request: Request) {
       subject: `New quote request — ${name}${service ? ` (${service})` : ""}`,
       text: `Name: ${name}\nPhone: ${phone}\nEmail: ${email || "—"}\nAddress: ${address || "—"}\nService: ${service || "—"}\n\nDetails:\n${details || "—"}${photoLines}`
     });
+
+    // Confirmation to the customer. Best-effort: a failure here must not fail the
+    // request — the business email above is what actually matters.
+    if (typeof email === "string" && email.trim().length > 0) {
+      try {
+        await resend.emails.send({
+          from,
+          to: email,
+          subject: "We got your request — Ghost Tree Service",
+          text: `Hi ${name},\n\nThanks for reaching out — we got your request and our team will be in touch shortly to talk through the details and get you a quote.\n\nFor storm emergencies, you can call or text (330) 907-6403 any time, day or night. We're here 24/7.\n\nTalk soon,\nGhost Tree Service`
+        });
+      } catch {
+        // Confirmation failed (bad address, Resend hiccup). Swallow it.
+      }
+    }
+
     return NextResponse.json({ ok: true });
   } catch (e) {
     return NextResponse.json({ ok: false, error: e instanceof Error ? e.message : "Send failed." }, { status: 500 });

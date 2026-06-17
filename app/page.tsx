@@ -8,8 +8,8 @@ import TrustLine from "@/components/TrustLine";
 import { services, serviceAreas, testimonials, reviewSummary, proofPoints, site } from "@/lib/site";
 
 const HERO = "/images/optimized/ghost-tree-service-04-medina-oh.webp";
-const BA_BEFORE = "/images/optimized/ghost-tree-service-akron-storm-on-garage-medina-oh.webp";
-const BA_AFTER = "/images/optimized/ghost-tree-service-akron-storm-on-garage-after-medina-oh.webp";
+const BA_BEFORE = "/images/optimized/ghost-tree-service-big-sky-apartments-before-medina-oh.webp";
+const BA_AFTER = "/images/optimized/ghost-tree-service-big-sky-apart-after-medina-oh.webp";
 
 export default function Home() {
   return (
@@ -28,8 +28,9 @@ export default function Home() {
           <p className="kicker">Medina County · 24/7 emergency</p>
           <h1 className={styles.h1}>When a tree comes down in Medina County, we&rsquo;re already moving.</h1>
           <p className={styles.heroSub}>
-            24/7 emergency tree removal, careful takedowns, trimming, and storm cleanup across Medina County and
-            Northeast Ohio. Heavy enough for the crane jobs, clean enough you&rsquo;d never know we were here.
+            Family owned &amp; operated. 24/7 emergency tree removal, careful takedowns, trimming, and storm cleanup
+            across Medina County and Northeast Ohio. Heavy enough for the crane jobs, clean enough you&rsquo;d never know
+            we were here.
           </p>
           <div className={styles.ctas}>
             <a href={site.phoneHref} className="btn btn-call">
@@ -116,19 +117,19 @@ export default function Home() {
             <div className={styles.baImg}>
               <Image
                 src={BA_BEFORE}
-                alt="Storm-damaged tree on a garage before Ghost Tree Service cleanup"
+                alt="Overgrown trees crowding the Big Sky apartments before Ghost Tree Service cleared them"
                 fill
                 sizes="(max-width: 680px) 100vw, 50vw"
                 className={styles.coverImg}
               />
             </div>
-            <figcaption className="mono">Before · storm on garage · Akron</figcaption>
+            <figcaption className="mono">Before · apartment tree work · Big Sky</figcaption>
           </figure>
           <figure className={styles.figure}>
             <div className={styles.baImg}>
               <Image
                 src={BA_AFTER}
-                alt="The same property cleared and cleaned by Ghost Tree Service"
+                alt="The same Big Sky apartments property cleared and cleaned up by Ghost Tree Service"
                 fill
                 sizes="(max-width: 680px) 100vw, 50vw"
                 className={styles.coverImg}
