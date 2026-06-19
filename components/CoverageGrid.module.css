@@ -1,0 +1,149 @@
+/* Coverage grid — interactive HUD "nodes" for service-area towns.
+   Theme-agnostic: every value derives from the channel tokens, so it works the
+   same in the always-dark home band and the normal-theme coverage page.
+   Deep-page towns render as links (with a → affordance); others are static nodes. */
+
+.grid {
+  position: relative;
+}
+.group + .group {
+  margin-top: var(--sp-4);
+}
+.groupLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: 0 0 var(--sp-2);
+}
+.groupLabel::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgb(var(--fg-rgb) / 0.25), transparent);
+}
+
+.nodes {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--sp-1);
+}
+/* pointer-following glow pool, sits behind the nodes */
+.nodes::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(220px circle at var(--mx, -300px) var(--my, -300px), rgb(var(--fg-rgb) / 0.09), transparent 65%);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+.nodes[data-active="true"]::before {
+  opacity: 1;
+}
+
+.node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 13px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--fs-13);
+  letter-spacing: 0.03em;
+  color: var(--fg);
+  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease),
+    background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+/* HUD corner ticks (top-left + bottom-right) */
+.node::before,
+.node::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--faint);
+  transition: border-color var(--dur) var(--ease), width var(--dur) var(--ease), height var(--dur) var(--ease);
+}
+.node::before {
+  top: 4px;
+  left: 4px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.node::after {
+  right: 4px;
+  bottom: 4px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--faint);
+  transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.arrow {
+  margin-left: auto;
+  padding-left: 6px;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+/* interactive (link) nodes */
+a.node {
+  cursor: pointer;
+}
+a.node:hover,
+a.node:focus-visible {
+  border-color: var(--fg);
+  background: var(--surface-2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgb(var(--fg-rgb) / 0.14);
+}
+a.node:hover .dot,
+a.node:focus-visible .dot {
+  background: var(--fg);
+  box-shadow: 0 0 9px rgb(var(--fg-rgb) / 0.7);
+}
+a.node:hover::before,
+a.node:focus-visible::before,
+a.node:hover::after,
+a.node:focus-visible::after {
+  border-color: var(--fg);
+  width: 9px;
+  height: 9px;
+}
+a.node:hover .arrow,
+a.node:focus-visible .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* static (non-link) nodes — react more subtly */
+span.node:hover {
+  border-color: rgb(var(--fg-rgb) / 0.32);
+  background: var(--surface-2);
+}
+span.node:hover .dot {
+  background: var(--muted);
+}
+
+/* Nodes are visible by default — interactivity is hover/pointer-driven, so content is
+   never hidden behind an animation that might not play (background tabs pause CSS
+   animations, leaving an opacity-0 start frame stuck). */

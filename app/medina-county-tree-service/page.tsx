@@ -6,6 +6,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
 import Faq from "@/components/Faq";
 import QuoteBand from "@/components/QuoteBand";
+import CoverageGrid from "@/components/CoverageGrid";
 import styles from "./page.module.css";
 
 const BAND = "/images/optimized/ghost-tree-service-chainsaw-cutting-fallen-oak-medina-oh.webp";
@@ -46,21 +47,13 @@ export default function MedinaPage() {
 
       <section className={`wrap ${styles.block}`}>
         <p className="kicker">Towns we serve</p>
-        {Object.entries(serviceAreasByCounty).map(([county, towns]) => (
-          <div key={county} className={styles.county}>
-            <h3 className={`kicker ${styles.countyName}`}>{county}</h3>
-            <ul className={styles.chips}>
-              {towns.map((townName) => {
-                const town = serviceAreaTowns.find((t) => t.name === townName);
-                return (
-                  <li key={townName}>
-                    {town ? <Link href={`/tree-service/${town.slug}/`}>{townName}</Link> : townName}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        ))}
+        <CoverageGrid
+          className={styles.coverage}
+          groups={Object.entries(serviceAreasByCounty).map(([county, towns]) => ({
+            label: county,
+            towns: towns.map((name) => ({ name, slug: serviceAreaTowns.find((t) => t.name === name)?.slug }))
+          }))}
+        />
         <p className={styles.note}>{serviceAreaNote}</p>
       </section>
 

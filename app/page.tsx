@@ -5,7 +5,8 @@ import GhostSection from "@/components/GhostSection";
 import ServiceCard from "@/components/ServiceCard";
 import QuoteBand from "@/components/QuoteBand";
 import TrustLine from "@/components/TrustLine";
-import { services, serviceAreas, testimonials, reviewSummary, proofPoints, site } from "@/lib/site";
+import CoverageGrid from "@/components/CoverageGrid";
+import { services, serviceAreas, serviceAreaTowns, testimonials, reviewSummary, proofPoints, site } from "@/lib/site";
 
 const HERO = "/images/optimized/ghost-tree-service-04-medina-oh.webp";
 const BA_BEFORE = "/images/optimized/ghost-tree-service-big-sky-apartments-before-medina-oh.webp";
@@ -92,11 +93,16 @@ export default function Home() {
         <div className="wrap">
           <p className="kicker">Primary service area</p>
           <h2 className={styles.medinaH2}>Medina County tree service, without the franchise blur.</h2>
-          <ul className={styles.chips}>
-            {serviceAreas.slice(0, 9).map((a) => (
-              <li key={a}>{a}</li>
-            ))}
-          </ul>
+          <CoverageGrid
+            className={styles.areaGrid}
+            groups={[
+              {
+                towns: serviceAreas
+                  .slice(0, 9)
+                  .map((name) => ({ name, slug: serviceAreaTowns.find((t) => t.name === name)?.slug }))
+              }
+            ]}
+          />
           <Link href="/medina-county-tree-service/" className={`mono ${styles.headLink}`}>
             Open the Medina County plan →
           </Link>

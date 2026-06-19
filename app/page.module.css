@@ -119,20 +119,8 @@
   max-width: 20ch;
   margin-top: var(--sp-1);
 }
-.chips {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: var(--sp-1);
+.areaGrid {
   margin-block: var(--sp-3);
-}
-.chips li {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: var(--fs-13);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 6px 12px;
-  color: var(--fg);
-  text-align: center;
 }
 
 /* BEFORE / AFTER */

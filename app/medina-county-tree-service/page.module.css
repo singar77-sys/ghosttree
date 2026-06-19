@@ -21,17 +21,8 @@
   padding-block: var(--sp-4);
   border-top: 1px solid var(--line);
 }
-.county {
-  margin-top: var(--sp-3);
-}
-.countyName {
-  margin: 0;
-}
-.chips {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: var(--sp-1);
-  margin-top: var(--sp-2);
+.coverage {
+  margin-block: var(--sp-3);
 }
 .note {
   margin-top: var(--sp-3);
@@ -39,15 +30,6 @@
   color: var(--muted);
   font-size: var(--fs-13);
   line-height: 1.55;
-}
-.chips li {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: var(--fs-13);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 6px 12px;
-  color: var(--fg);
-  text-align: center;
 }
 .band {
   position: relative;
