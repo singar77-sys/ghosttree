@@ -160,6 +160,40 @@
   text-transform: uppercase;
 }
 
+/* FAMILY */
+.family {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--sp-4);
+  align-items: center;
+  padding-block: var(--sp-6);
+  border-block: 1px solid var(--line);
+}
+.familyFig {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.familyH2 {
+  max-width: 18ch;
+  margin-top: var(--sp-1);
+}
+.familyP {
+  max-width: 46ch;
+  margin: var(--sp-3) 0;
+  color: var(--muted);
+  font-size: var(--fs-20);
+  line-height: 1.6;
+}
+@media (max-width: 760px) {
+  .family {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* REVIEWS */
 .reviews {
   display: grid;

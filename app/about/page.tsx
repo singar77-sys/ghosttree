@@ -82,12 +82,24 @@ export default function AboutPage() {
         <div>
           <p className="kicker">Who runs it</p>
           <h2>Family owned &amp; operated.</h2>
+          <p>
+            Ghost Tree Service is a family owned and operated crew based in Seville, serving Medina County and Northeast
+            Ohio. You&rsquo;re hiring the family whose name is on the truck, not a call center routing you to a stranger.
+            That&rsquo;s why the property gets treated like our own and the cleanup is never someone else&rsquo;s problem.
+          </p>
         </div>
-        <p>
-          Ghost Tree Service is a family owned and operated crew based in Seville, serving Medina County and Northeast
-          Ohio. You&rsquo;re hiring the family whose name is on the truck, not a call center routing you to a stranger.
-          That&rsquo;s why the property gets treated like our own and the cleanup is never someone else&rsquo;s problem.
-        </p>
+        <figure className={styles.ownerFig}>
+          <div className={styles.ownerShot}>
+            <Image
+              src="/images/optimized/ghost-tree-service-owners-morbark-wood-chipper-medina-oh.webp"
+              alt="Logan and his wife, the owners of Ghost Tree Service, with their Morbark wood chipper in Medina County, Ohio"
+              fill
+              sizes="(max-width: 760px) 100vw, 55vw"
+              className={styles.ownerImg}
+            />
+          </div>
+          <figcaption className="mono">Logan &amp; his wife &middot; owners of Ghost Tree Service</figcaption>
+        </figure>
       </section>
 
       <section className={`wrap ${styles.story}`}>

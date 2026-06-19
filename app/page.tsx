@@ -10,6 +10,7 @@ import { services, serviceAreas, testimonials, reviewSummary, proofPoints, site 
 const HERO = "/images/optimized/ghost-tree-service-04-medina-oh.webp";
 const BA_BEFORE = "/images/optimized/ghost-tree-service-big-sky-apartments-before-medina-oh.webp";
 const BA_AFTER = "/images/optimized/ghost-tree-service-big-sky-apart-after-medina-oh.webp";
+const OWNERS = "/images/optimized/ghost-tree-service-owners-morbark-wood-chipper-medina-oh.webp";
 
 export default function Home() {
   return (
@@ -54,7 +55,7 @@ export default function Home() {
       </section>
 
       <GhostSection
-        src="/images/optimized/ghost-tree-service-stacked-firewood-logs-medina-oh.webp"
+        src="/images/optimized/ghost-tree-service-crane-tree-removal-over-house-medina-oh.webp"
         className={styles.diff}
         ariaLabel="The difference"
       >
@@ -84,7 +85,7 @@ export default function Home() {
       </section>
 
       <GhostSection
-        src="/images/optimized/ghost-tree-service-felled-timber-log-pile-medina-oh.webp"
+        src="/images/optimized/ghost-tree-service-climber-tall-yard-tree-removal-medina-oh.webp"
         className={styles.medina}
         ariaLabel="Primary service area"
       >
@@ -137,6 +138,29 @@ export default function Home() {
             </div>
             <figcaption className="mono">After · cleared + cleaned</figcaption>
           </figure>
+        </div>
+      </section>
+
+      <section className={`wrap ${styles.family}`} aria-label="Family owned and operated">
+        <figure className={styles.familyFig}>
+          <Image
+            src={OWNERS}
+            alt="Logan and his wife, owners of Ghost Tree Service, with their Morbark wood chipper in Medina County, Ohio"
+            fill
+            sizes="(max-width: 760px) 100vw, 45vw"
+            className={styles.coverImg}
+          />
+        </figure>
+        <div>
+          <p className="kicker">Who you&rsquo;re hiring</p>
+          <h2 className={styles.familyH2}>Family owned &amp; operated.</h2>
+          <p className={styles.familyP}>
+            Ghost Tree Service is run by the family whose name is on the truck — not a call center. You deal with the
+            owners from the first call to the final rake, which is exactly why your property gets treated like our own.
+          </p>
+          <Link href="/about/" className={`mono ${styles.headLink}`}>
+            Meet the family →
+          </Link>
         </div>
       </section>
 
