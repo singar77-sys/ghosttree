@@ -44,9 +44,9 @@ export const metadata: Metadata = {
     url: site.url,
     title: homeTitle,
     description: site.description,
-    images: ["/images/optimized/ghost-tree-service-crane-tree-removal-medina-oh.webp"]
+    images: ["/images/og-card.jpg"]
   },
-  twitter: { card: "summary_large_image", title: homeTitle, description: site.description }
+  twitter: { card: "summary_large_image", title: homeTitle, description: site.description, images: ["/images/og-card.jpg"] }
 };
 
 export const viewport: Viewport = {

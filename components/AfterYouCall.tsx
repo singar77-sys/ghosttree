@@ -28,7 +28,7 @@ const steps = [
 export default function AfterYouCall() {
   return (
     <GhostSection
-      src="/images/optimized/ghost-tree-service-hollow-trunk-removal-chainsaw-medina-oh.webp"
+      src="/images/optimized/ghost-tree-service-gordon-st-crane-job-medina-oh.webp"
       className={styles.wrap}
       ariaLabel="What happens after you call"
     >

@@ -13,7 +13,7 @@ export default function QuoteBand({
 }) {
   return (
     <GhostSection
-      src="/images/optimized/ghost-tree-service-fresh-cut-stump-closeup-medina-oh.webp"
+      src="/images/optimized/ghost-tree-service-tree-climber-bare-maple-by-house-medina-oh.webp"
       className={styles.cta}
     >
       <div className="wrap">

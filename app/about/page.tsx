@@ -106,7 +106,7 @@ export default function AboutPage() {
       </section>
 
       <GhostSection
-        src="/images/optimized/ghost-tree-service-leaf-blower-yard-cleanup-medina-oh.webp"
+        src="/images/optimized/ghost-tree-service-crew-member-branded-hoodie-medina-oh.webp"
         className={styles.proof}
         ariaLabel="What sets Ghost Tree apart"
       >

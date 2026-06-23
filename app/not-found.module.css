@@ -1,0 +1,26 @@
+.wrap {
+  min-height: 56vh;
+  padding-block: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.h1 {
+  max-width: 18ch;
+  margin-top: var(--sp-1);
+}
+.lead {
+  max-width: 48ch;
+  margin: var(--sp-3) 0 var(--sp-4);
+  color: var(--muted);
+  font-size: var(--fs-20);
+  line-height: 1.55;
+}
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  justify-content: center;
+}

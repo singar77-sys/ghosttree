@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { upload } from "@vercel/blob/client";
 import { track } from "@vercel/analytics";
 import { services, site } from "@/lib/site";
 import styles from "./QuoteForm.module.css";
@@ -25,20 +24,6 @@ export default function QuoteForm() {
     const form = e.currentTarget;
     const fd = new FormData(form);
 
-    // Best-effort photo upload to Vercel Blob; falls back silently if not configured.
-    const photoUrls: string[] = [];
-    const files = (form.elements.namedItem("photos") as HTMLInputElement | null)?.files;
-    if (files && files.length) {
-      try {
-        for (const file of Array.from(files).slice(0, 6)) {
-          const blob = await upload(file.name, file, { access: "public", handleUploadUrl: "/api/quote/upload" });
-          photoUrls.push(blob.url);
-        }
-      } catch {
-        // Blob not configured yet — proceed with text only.
-      }
-    }
-
     const payload = {
       name: String(fd.get("name") || ""),
       phone: String(fd.get("phone") || ""),
@@ -46,7 +31,6 @@ export default function QuoteForm() {
       address: String(fd.get("address") || ""),
       service: String(fd.get("service") || ""),
       details: String(fd.get("details") || ""),
-      photos: photoUrls,
       // Spam signals: honeypot field (should stay empty) + time-on-form.
       company: String(fd.get("company") || ""),
       elapsedMs: Date.now() - loadedAt.current
@@ -161,10 +145,6 @@ export default function QuoteForm() {
       <label className={styles.field}>
         <span>What&rsquo;s going on?</span>
         <textarea name="details" rows={4} placeholder="Tree down, leaning, dead limbs near the house…" />
-      </label>
-      <label className={styles.field}>
-        <span>Photos (optional)</span>
-        <input name="photos" type="file" accept="image/*" multiple className={styles.file} />
       </label>
       <button type="submit" className="btn btn-call" disabled={status === "sending"}>
         {status === "sending" ? "Sending…" : "Request my free quote"}

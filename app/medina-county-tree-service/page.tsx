@@ -9,7 +9,7 @@ import QuoteBand from "@/components/QuoteBand";
 import CoverageGrid from "@/components/CoverageGrid";
 import styles from "./page.module.css";
 
-const BAND = "/images/optimized/ghost-tree-service-chainsaw-cutting-fallen-oak-medina-oh.webp";
+const BAND = "/images/optimized/ghost-tree-service-shreeve-storm-job-crane-medina-oh.webp";
 
 export const metadata: Metadata = {
   title: "Medina County Tree Service",

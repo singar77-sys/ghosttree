@@ -134,7 +134,7 @@ export const services: Service[] = [
     title: "24/7 Emergency Tree Removal",
     slug: "emergency-tree-removal",
     eyebrow: "Storm response",
-    image: "/images/optimized/ghost-tree-service-emergency-tree-service-medina-oh.webp",
+    image: "/images/optimized/ghost-tree-service-pine-franks-crane-storm-job-medina-oh.webp",
     image2: "/images/optimized/ghost-tree-service-shreeve-pine-crane-storm-job-medina-oh.webp",
     image2Alt: "Crane lifting a storm-toppled pine off a property during an emergency call",
     summary:
@@ -181,7 +181,7 @@ export const services: Service[] = [
     title: "Tree Removal",
     slug: "tree-removal",
     eyebrow: "Controlled takedowns",
-    image: "/images/optimized/ghost-tree-service-tree-removal-crane-medina-oh.webp",
+    image: "/images/optimized/ghost-tree-service-crane-assisted-spar-takedown-medina-oh.webp",
     image2: "/images/optimized/ghost-tree-service-large-splitting-oak-crane-job-medina-oh.webp",
     image2Alt: "Crane lifting a sectioned trunk off a splitting oak during a controlled removal",
     summary:
@@ -229,9 +229,9 @@ export const services: Service[] = [
     title: "Tree Trimming & Pruning",
     slug: "tree-trimming-pruning",
     eyebrow: "Canopy geometry",
-    image: "/images/optimized/ghost-tree-service-tree-pruning-medina-oh.webp",
-    image2: "/images/optimized/ghost-tree-service-boom-lift-chainsaw-trimming-medina-oh.webp",
-    image2Alt: "Arborist trimming limbs from a boom lift with a chainsaw",
+    image: "/images/optimized/ghost-tree-service-tree-climber-summer-canopy-medina-oh.webp",
+    image2: "/images/optimized/ghost-tree-service-climber-chainsaw-pine-canopy-medina-oh.webp",
+    image2Alt: "Climber running a chainsaw high in a pine canopy",
     summary:
       "Dead limbs over the driveway, branches on the roof, growth into the lines. Cut back for safety and shape.",
     details:
@@ -285,9 +285,9 @@ export const services: Service[] = [
     title: "Storm Damage Cleanup",
     slug: "storm-damage-cleanup",
     eyebrow: "After the wind",
-    image: "/images/optimized/ghost-tree-service-storm-cleanup-aerial-view-medina-oh.webp",
-    image2: "/images/optimized/ghost-tree-service-storm-split-willow-limbs-medina-oh.webp",
-    image2Alt: "Storm-split willow with broken limbs exposed, waiting on cleanup",
+    image: "/images/optimized/ghost-tree-service-storm-fallen-tree-cleanup-medina-oh.webp",
+    image2: "/images/optimized/ghost-tree-service-akron-storm-on-garage-medina-oh.webp",
+    image2Alt: "Storm-felled tree dropped across a garage roof after high wind",
     summary:
       "After the storm: downed trees, hung limbs, and debris cleared fast. Hauled, chipped, and raked clean.",
     details:
@@ -332,9 +332,9 @@ export const services: Service[] = [
     title: "Lot Clearing",
     slug: "lot-clearing",
     eyebrow: "Ground prep",
-    image: "/images/optimized/ghost-tree-service-lot-clearing-medina-oh.webp",
-    image2: "/images/optimized/ghost-tree-service-forestry-harvester-felling-medina-oh.webp",
-    image2Alt: "Mechanized felling on a clearing job — pine coming down clean",
+    image: "/images/optimized/ghost-tree-service-mini-skid-steer-brush-cleanup-medina-oh.webp",
+    image2: "/images/optimized/ghost-tree-service-winter-tree-takedown-medina-oh.webp",
+    image2Alt: "Bare-tree takedown clearing an open lot in winter",
     summary:
       "Brush, scrub, and trees cleared for building, access, or resale — including rotary brush hogging of overgrown fields. Ground prepped at any scale.",
     details:
@@ -380,9 +380,9 @@ export const services: Service[] = [
     title: "Utility & Commercial Accounts",
     slug: "utility-commercial",
     eyebrow: "Crews & capacity",
-    image: "/images/optimized/ghost-tree-service-crane-tree-removal-medina-oh.webp",
-    image2: "/images/optimized/ghost-tree-service-backhoe-loading-trees-truck-medina-oh.webp",
-    image2Alt: "Crew and loader moving trees onto a flatbed — built for volume work",
+    image: "/images/optimized/ghost-tree-service-cool-crane-shot-medina-oh.webp",
+    image2: "/images/optimized/ghost-tree-service-maxed-out-medina-oh.webp",
+    image2Alt: "Crane truck loaded to capacity on a large commercial removal",
     summary:
       "Insured, repeatable tree work for property managers, municipalities, builders, and utility-adjacent accounts.",
     details:

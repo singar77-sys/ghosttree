@@ -55,7 +55,9 @@ export default function Footer() {
         <span>
           © {year} {site.legalName}
         </span>
-        <span className="mono">24/7 emergency · {site.phone}</span>
+        <span className="mono">
+          <Link href="/privacy/">Privacy</Link> · 24/7 emergency · {site.phone}
+        </span>
       </div>
     </footer>
   );

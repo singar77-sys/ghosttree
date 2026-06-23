@@ -1,0 +1,40 @@
+.legal {
+  padding-block: var(--sp-6) var(--sp-5);
+  max-width: 74ch;
+}
+.h1 {
+  margin: var(--sp-1) 0;
+}
+.updated {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--fs-13);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: var(--sp-4);
+}
+.legal h2 {
+  margin: var(--sp-4) 0 var(--sp-1);
+  font-size: var(--fs-25);
+}
+.legal p {
+  color: var(--muted);
+  font-size: var(--fs-16);
+  line-height: 1.65;
+  margin-bottom: var(--sp-2);
+}
+.legal ul {
+  list-style: disc;
+  padding-left: var(--sp-3);
+  margin-bottom: var(--sp-2);
+  color: var(--muted);
+}
+.legal li {
+  font-size: var(--fs-16);
+  line-height: 1.6;
+  margin: 6px 0;
+}
+.legal a {
+  color: var(--accent);
+  text-decoration: underline;
+}
