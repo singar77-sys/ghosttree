@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { gallery } from "@/lib/gallery";
 import { site } from "@/lib/site";
+import GalleryGrid from "@/components/GalleryGrid";
 import QuoteBand from "@/components/QuoteBand";
 import JsonLd from "@/components/JsonLd";
 import styles from "./page.module.css";
@@ -34,20 +34,7 @@ export default function GalleryPage() {
         </p>
       </section>
 
-      <section className={`wrap ${styles.grid}`} aria-label="Job photos">
-        {gallery.map((g, i) => (
-          <figure key={g.src} className={styles.item}>
-            <Image
-              src={g.src}
-              alt={g.alt}
-              fill
-              sizes="(max-width: 600px) 50vw, (max-width: 980px) 33vw, 25vw"
-              className={styles.cover}
-              priority={i < 4}
-            />
-          </figure>
-        ))}
-      </section>
+      <GalleryGrid items={gallery} />
 
       <QuoteBand kicker="See something like your job?" heading="Let’s add yours to the gallery." />
     </>
