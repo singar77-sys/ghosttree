@@ -1,5 +1,5 @@
 /* Ghost Tree Service — design tokens + base.
-   The invisible system: phi-informed type scale (1.25), Fibonacci spacing, one easing curve.
+   A 1.25 modular type scale, Fibonacci spacing (8/13/21/34/55/89), one easing curve.
    Monochrome: every color derives from two channel tokens (--bg-rgb / --fg-rgb), flipped by
    [data-theme="dark"]; --accent aliases --fg as the future color hook.
    Component-specific styles live in CSS Modules. This file is tokens + base + shared utilities. */

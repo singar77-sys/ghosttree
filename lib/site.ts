@@ -674,7 +674,7 @@ export const faqs = [
   },
   {
     q: "What does tree removal cost?",
-    a: "Cost depends on the tree's size, location, access, and whether a crane is needed. We give a clear price up front, on site, with no surprises."
+    a: "Cost depends on the tree's size, location, access, and whether a crane is needed. You get the full price on site, before any work begins."
   },
   {
     q: "Are you insured?",

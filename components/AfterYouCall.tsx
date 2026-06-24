@@ -11,7 +11,7 @@ const steps = [
   {
     lbl: "The read",
     h: "We assess. You get a clear price.",
-    p: "On site, with a clear written price. No mystery numbers, no surprises later."
+    p: "We walk the job and hand you a written price before the first cut."
   },
   {
     lbl: "The plan",

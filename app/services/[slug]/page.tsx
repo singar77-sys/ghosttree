@@ -100,7 +100,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <section className={`wrap ${styles.process}`} aria-label="How the job runs">
         <div className={styles.secHead}>
           <p className="kicker">How the job runs</p>
-          <h2>Start to finish, no surprises.</h2>
+          <h2>You see each step coming.</h2>
         </div>
         <ol className={styles.steps}>
           {service.process.map((p, i) => (

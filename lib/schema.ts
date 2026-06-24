@@ -1,4 +1,4 @@
-// JSON-LD builders. The answer-engine layer: machine-readable truth about the business.
+// JSON-LD builders: structured data for search engines and AI answer engines.
 // Render with <script type="application/ld+json"> (see components/JsonLd.tsx).
 
 import { site, services, reviewSummary, faqs, type Service, type ServiceAreaTown } from "@/lib/site";
