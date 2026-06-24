@@ -17,15 +17,12 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
   font-family: var(--font-mono), ui-monospace, monospace;
   font-weight: 600;
   font-size: var(--fs-13);
   letter-spacing: 0.18em;
   color: var(--fg);
-}
-.sigil,
-.dot {
-  color: var(--muted);
 }
 .nav {
   display: flex;
@@ -34,15 +31,23 @@
   color: var(--muted);
 }
 .nav a {
+  white-space: nowrap;
   transition: color var(--dur) var(--ease);
 }
 .nav a:hover {
   color: var(--fg);
 }
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+}
 .call {
   font-size: 0.8rem;
   min-height: 40px;
   padding: 0 14px;
+  white-space: nowrap;
 }
 .toggle {
   display: inline-flex;
@@ -62,9 +67,109 @@
 .toggle:hover {
   border-color: var(--accent);
 }
-@media (max-width: 760px) {
+
+/* Hamburger — hidden until the inline nav runs out of room. */
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color var(--dur) var(--ease);
+}
+.burger:hover {
+  border-color: var(--accent);
+}
+.burgerBox {
+  position: relative;
+  width: 20px;
+  height: 14px;
+}
+.burgerBox span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--fg);
+  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease), top var(--dur) var(--ease);
+}
+.burgerBox span:nth-child(1) {
+  top: 0;
+}
+.burgerBox span:nth-child(2) {
+  top: 6px;
+}
+.burgerBox span:nth-child(3) {
+  top: 12px;
+}
+.burgerBox[data-open] span:nth-child(1) {
+  top: 6px;
+  transform: rotate(45deg);
+}
+.burgerBox[data-open] span:nth-child(2) {
+  opacity: 0;
+}
+.burgerBox[data-open] span:nth-child(3) {
+  top: 6px;
+  transform: rotate(-45deg);
+}
+
+/* Mobile drawer — overlays below the bar, out of flow so it never pushes content. */
+.drawer {
+  display: none;
+}
+
+@media (max-width: 900px) {
   .nav,
   .call {
     display: none;
   }
+  .burger {
+    display: inline-flex;
+  }
+  .drawer {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+    padding: var(--sp-3) var(--sp-4) var(--sp-4);
+    background: rgb(var(--bg-rgb) / 0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .drawer[data-open] {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+.drawerNav {
+  display: flex;
+  flex-direction: column;
+}
+.drawerNav a {
+  padding: 13px 4px;
+  font-size: 1.05rem;
+  color: var(--fg);
+  border-bottom: 1px solid var(--line);
+  transition: color var(--dur) var(--ease);
+}
+.drawerNav a:hover {
+  color: var(--accent);
+}
+.drawer .btn {
+  margin-top: var(--sp-2);
 }
