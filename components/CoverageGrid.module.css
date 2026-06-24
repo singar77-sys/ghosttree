@@ -28,6 +28,15 @@
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: var(--sp-1);
 }
+/* fixed, flush column count (opt-in via the `columns` prop) */
+.nodes[data-cols="4"] {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 640px) {
+  .nodes[data-cols="4"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 /* pointer-following glow pool, sits behind the nodes */
 .nodes::before {
   content: "";

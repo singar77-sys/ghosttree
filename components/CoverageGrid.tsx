@@ -15,12 +15,13 @@ function onMove(e: MouseEvent<HTMLDivElement>) {
   el.style.setProperty("--my", `${e.clientY - r.top}px`);
 }
 
-function NodeGroup({ group }: { group: Group }) {
+function NodeGroup({ group, columns }: { group: Group; columns?: number }) {
   return (
     <div className={styles.group}>
       {group.label && <p className={`kicker ${styles.groupLabel}`}>{group.label}</p>}
       <div
         className={styles.nodes}
+        data-cols={columns || undefined}
         onMouseMove={onMove}
         onMouseEnter={(e) => {
           e.currentTarget.dataset.active = "true";
@@ -56,11 +57,19 @@ function NodeGroup({ group }: { group: Group }) {
   );
 }
 
-export default function CoverageGrid({ groups, className }: { groups: Group[]; className?: string }) {
+export default function CoverageGrid({
+  groups,
+  className,
+  columns
+}: {
+  groups: Group[];
+  className?: string;
+  columns?: number;
+}) {
   return (
     <div className={`${styles.grid}${className ? ` ${className}` : ""}`}>
       {groups.map((g, i) => (
-        <NodeGroup key={g.label ?? i} group={g} />
+        <NodeGroup key={g.label ?? i} group={g} columns={columns} />
       ))}
     </div>
   );

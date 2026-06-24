@@ -95,10 +95,11 @@ export default function Home() {
           <h2 className={styles.medinaH2}>Medina County tree service, without the franchise blur.</h2>
           <CoverageGrid
             className={styles.areaGrid}
+            columns={4}
             groups={[
               {
                 towns: serviceAreas
-                  .slice(0, 9)
+                  .slice(0, 8)
                   .map((name) => ({ name, slug: serviceAreaTowns.find((t) => t.name === name)?.slug }))
               }
             ]}
@@ -112,8 +113,8 @@ export default function Home() {
       <section className={`wrap ${styles.section}`} aria-label="Recent work">
         <div className={styles.head}>
           <div>
-            <p className="kicker">Proof in the work</p>
-            <h2>Before. After. No stock photos.</h2>
+            <h2>Before. After.</h2>
+            <p className={`kicker ${styles.baKicker}`}>Proof in the work</p>
           </div>
           <Link href="/gallery/" className={`mono ${styles.headLink}`}>
             Full gallery →

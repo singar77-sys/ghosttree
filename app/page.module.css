@@ -95,6 +95,9 @@
   gap: var(--sp-3);
   margin-bottom: var(--sp-4);
 }
+.baKicker {
+  margin-top: var(--sp-1);
+}
 .headLink {
   color: var(--accent);
   white-space: nowrap;
