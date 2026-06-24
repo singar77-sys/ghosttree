@@ -7,16 +7,16 @@ import styles from "./page.module.css";
 
 const WORK_PHOTOS = [
   {
-    src: "/images/optimized/ghost-tree-service-arborist-trunk-sectioning-1-medina-oh.webp",
-    alt: "Climbing arborist on the spar, chainsaw resting on the fresh cut"
+    src: "/images/optimized/ghost-tree-service-nikki-and-log-medina-oh.webp",
+    alt: "A Ghost Tree Service crew member beside a freshly cut log section"
   },
   {
-    src: "/images/optimized/ghost-tree-service-arborist-trunk-sectioning-2-medina-oh.webp",
-    alt: "Arborist ascending a bare trunk on rope and spikes"
+    src: "/images/optimized/ghost-tree-service-nikki-on-logs-from-shreeve-storm-medina-oh.webp",
+    alt: "On a stack of storm-felled logs cleared after the Shreve storm"
   },
   {
-    src: "/images/optimized/ghost-tree-service-arborist-trunk-sectioning-3-medina-oh.webp",
-    alt: "Cut top section dropping clear of the spar"
+    src: "/images/optimized/ghost-tree-service-us-lift-pic-medina-oh.webp",
+    alt: "A massive log section craned out onto the flatbed"
   }
 ];
 
