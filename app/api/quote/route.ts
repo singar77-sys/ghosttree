@@ -9,6 +9,7 @@ type QuoteBody = {
   address?: string;
   service?: string;
   details?: string;
+  photos?: string[];
   company?: string;
   elapsedMs?: number;
 };
@@ -35,7 +36,7 @@ export async function POST(request: Request) {
   recent.push(now);
   rateLimitHits.set(ip, recent);
 
-  const { name, phone, email, address, service, details, company, elapsedMs } = data;
+  const { name, phone, email, address, service, details, photos, company, elapsedMs } = data;
   if (!name || !phone) {
     return NextResponse.json({ ok: false, error: "Name and phone are required." }, { status: 422 });
   }
@@ -61,12 +62,13 @@ export async function POST(request: Request) {
 
   try {
     const resend = new Resend(apiKey);
+    const photoLines = Array.isArray(photos) && photos.length ? `\n\nPhotos:\n${photos.join("\n")}` : "";
     await resend.emails.send({
       from,
       to,
       replyTo: email || undefined,
       subject: `New quote request — ${name}${service ? ` (${service})` : ""}`,
-      text: `Name: ${name}\nPhone: ${phone}\nEmail: ${email || "—"}\nAddress: ${address || "—"}\nService: ${service || "—"}\n\nDetails:\n${details || "—"}`
+      text: `Name: ${name}\nPhone: ${phone}\nEmail: ${email || "—"}\nAddress: ${address || "—"}\nService: ${service || "—"}\n\nDetails:\n${details || "—"}${photoLines}`
     });
 
     // Confirmation to the customer. Best-effort: a failure here must not fail the

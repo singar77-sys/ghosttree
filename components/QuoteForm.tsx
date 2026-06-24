@@ -1,11 +1,54 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { upload } from "@vercel/blob/client";
 import { track } from "@vercel/analytics";
 import { services, site } from "@/lib/site";
 import styles from "./QuoteForm.module.css";
 
 type Status = "idle" | "sending" | "ok" | "error" | "callus";
+
+const MAX_PHOTOS = 5;
+const MAX_DIM = 1600;
+
+// Downscale + re-encode in the browser so we never upload multi-MB phone originals.
+async function compress(file: File): Promise<File> {
+  if (!file.type.startsWith("image/")) return file;
+  try {
+    const bitmap = await createImageBitmap(file, { imageOrientation: "from-image" });
+    const scale = Math.min(1, MAX_DIM / Math.max(bitmap.width, bitmap.height));
+    const w = Math.round(bitmap.width * scale);
+    const h = Math.round(bitmap.height * scale);
+    const canvas = document.createElement("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return file;
+    ctx.drawImage(bitmap, 0, 0, w, h);
+    bitmap.close();
+    const blob = await new Promise<Blob | null>((res) => canvas.toBlob(res, "image/jpeg", 0.8));
+    if (!blob || blob.size >= file.size) return file;
+    return new File([blob], `${file.name.replace(/\.[^.]+$/, "")}.jpg`, { type: "image/jpeg" });
+  } catch {
+    return file;
+  }
+}
+
+// Compress + upload up to MAX_PHOTOS to Vercel Blob; return the public URLs. Any
+// failure (e.g. Blob not configured yet) is swallowed so the text submission still sends.
+async function uploadPhotos(files: File[]): Promise<string[]> {
+  const urls: string[] = [];
+  for (const file of files.slice(0, MAX_PHOTOS)) {
+    try {
+      const ready = await compress(file);
+      const blob = await upload(ready.name, ready, { access: "public", handleUploadUrl: "/api/quote/upload" });
+      urls.push(blob.url);
+    } catch {
+      // skip this photo, keep going
+    }
+  }
+  return urls;
+}
 
 export default function QuoteForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -24,6 +67,10 @@ export default function QuoteForm() {
     const form = e.currentTarget;
     const fd = new FormData(form);
 
+    const fileInput = form.elements.namedItem("photos") as HTMLInputElement | null;
+    const files = fileInput?.files ? Array.from(fileInput.files) : [];
+    const photos = files.length ? await uploadPhotos(files) : [];
+
     const payload = {
       name: String(fd.get("name") || ""),
       phone: String(fd.get("phone") || ""),
@@ -31,6 +78,7 @@ export default function QuoteForm() {
       address: String(fd.get("address") || ""),
       service: String(fd.get("service") || ""),
       details: String(fd.get("details") || ""),
+      photos,
       // Spam signals: honeypot field (should stay empty) + time-on-form.
       company: String(fd.get("company") || ""),
       elapsedMs: Date.now() - loadedAt.current
@@ -145,6 +193,10 @@ export default function QuoteForm() {
       <label className={styles.field}>
         <span>What&rsquo;s going on?</span>
         <textarea name="details" rows={4} placeholder="Tree down, leaning, dead limbs near the house…" />
+      </label>
+      <label className={styles.field}>
+        <span>Photos (optional, up to 5)</span>
+        <input name="photos" type="file" accept="image/*" multiple className={styles.file} />
       </label>
       <button type="submit" className="btn btn-call" disabled={status === "sending"}>
         {status === "sending" ? "Sending…" : "Request my free quote"}

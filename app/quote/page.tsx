@@ -20,7 +20,7 @@ export default function QuotePage() {
           <p className="kicker">Free quote</p>
           <h1 className={styles.h1}>Tell us about the tree.</h1>
           <p className={styles.lead}>
-            Send the details. We&rsquo;ll ask for photos by text if needed, then call you back with a clear price. Free, no obligation.
+            Send the details, plus a few photos if you have them &mdash; they help us price faster. We&rsquo;ll call you back with a clear price. Free, no obligation.
             Storm emergency? Don&rsquo;t wait on a form. Call or text <a href={site.phoneHref}>{site.phone}</a>, 24/7.
           </p>
           <a href={site.phoneHref} className="btn btn-call">
