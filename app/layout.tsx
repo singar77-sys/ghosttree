@@ -33,11 +33,15 @@ const bespokeSerif = localFont({
 
 const homeTitle = "Tree Service in Medina County, OH | Ghost Tree Service";
 
+// Preview / non-production deploys must not be indexed — a canonical tag alone isn't a hard block.
+const isProduction = process.env.VERCEL_ENV === "production";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: homeTitle, template: "%s | Ghost Tree Service" },
   description: site.description,
   alternates: { canonical: "/" },
+  robots: isProduction ? { index: true, follow: true } : { index: false, follow: false },
   openGraph: {
     type: "website",
     siteName: site.name,

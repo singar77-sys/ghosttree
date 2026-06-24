@@ -160,6 +160,13 @@ ul { margin: 0; padding: 0; list-style: none; }
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
 
+/* Mobile: clear the fixed StickyCallBar so it never covers footer / form content. */
+@media (max-width: 760px) {
+  body {
+    padding-bottom: calc(74px + env(safe-area-inset-bottom));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }

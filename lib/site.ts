@@ -23,6 +23,8 @@ export const site = {
     postalCode: "44273",
     country: "US"
   },
+  // Approximate (Seville, OH 44273). TODO: replace with exact lat/lng for the HQ address.
+  geo: { latitude: 41.0148, longitude: -81.8665 },
   hours: "24/7 emergency response",
   familyOwned: true,
   familyLine: "Family owned & operated",

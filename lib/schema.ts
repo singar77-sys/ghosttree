@@ -16,18 +16,20 @@ const areaServed = [
 const abs = (path: string) => (path.startsWith("http") ? path : `${site.url}${path}`);
 
 export function localBusinessSchema(
-  image = "/images/optimized/ghost-tree-service-crane-tree-removal-medina-oh.webp"
+  image = "/images/optimized/ghost-tree-service-crane-tree-removal-over-house-medina-oh.webp"
 ) {
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
     "@id": BUSINESS_ID,
     name: site.name,
     legalName: site.legalName,
     url: site.url,
+    logo: abs("/icon.png"),
     image: abs(image),
     telephone: "+13309076403",
     email: site.email,
+    slogan: site.tagline,
     address: {
       "@type": "PostalAddress",
       streetAddress: site.address.street,
@@ -36,8 +38,29 @@ export function localBusinessSchema(
       postalCode: site.address.postalCode,
       addressCountry: site.address.country
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: site.geo.latitude,
+      longitude: site.geo.longitude
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+13309076403",
+      contactType: "customer service",
+      areaServed: "US-OH",
+      availableLanguage: "en"
+    },
     priceRange: "$$",
     areaServed,
+    knowsAbout: [
+      "Tree removal",
+      "Emergency tree removal",
+      "Tree trimming and pruning",
+      "Storm damage cleanup",
+      "Lot clearing",
+      "Tree cabling and bracing",
+      "Crane tree removal"
+    ],
     sameAs: [site.facebook, site.googleMaps],
     openingHoursSpecification: [
       {
@@ -54,10 +77,14 @@ export function localBusinessSchema(
       bestRating: "5",
       worstRating: "1"
     },
-    makesOffer: services.map((s) => ({
-      "@type": "Offer",
-      itemOffered: { "@type": "Service", name: s.title }
-    }))
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Tree Services",
+      itemListElement: services.map((s) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: s.title, description: s.summary }
+      }))
+    }
   };
 }
 
