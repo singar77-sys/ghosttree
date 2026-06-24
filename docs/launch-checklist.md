@@ -18,6 +18,7 @@ Add these for **Production** (and Preview if you want preview deploys to send to
 | `RESEND_API_KEY` | `re_...` (from Resend → API Keys) | **Yes** — without it the quote form just tells visitors to call. |
 | `QUOTE_TO_EMAIL` | `logan@ghosttreeservice.com` | Optional — defaults to `info@ghosttreeservice.com`. This is where quote requests land. |
 | `QUOTE_FROM_EMAIL` | `Ghost Tree Quotes <quotes@ghosttreeservice.com>` | Optional — this is the default. The address must be at a domain verified in Resend (step 2). |
+| `BLOB_READ_WRITE_TOKEN` | auto-added when you create a Vercel Blob store | Optional — enables quote-form photo uploads. Without it the form silently submits text-only. Create a **Blob store** under Storage and connect it to the project. |
 
 Notes:
 - After adding/changing env vars, trigger a new deploy (they're baked at build/runtime per Vercel).
