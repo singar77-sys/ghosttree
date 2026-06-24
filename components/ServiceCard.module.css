@@ -5,18 +5,27 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
 }
-.card:hover {
-  transform: translateY(-3px);
-  border-color: rgb(var(--fg-rgb) / 0.3);
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgb(var(--fg-rgb) / 0.4);
+  box-shadow: 0 14px 32px rgb(var(--fg-rgb) / 0.1);
 }
 .img {
   position: relative;
   aspect-ratio: 16 / 10;
+  overflow: hidden;
 }
 .cover {
   object-fit: cover;
+  transition: transform 0.45s var(--ease);
+}
+.card:hover .cover,
+.card:focus-visible .cover {
+  transform: scale(1.05);
 }
 .body {
   padding: var(--sp-3);
@@ -38,4 +47,10 @@
 .arrow {
   color: var(--accent);
   margin-top: 4px;
+  align-self: flex-start;
+  transition: transform var(--dur) var(--ease);
+}
+.card:hover .arrow,
+.card:focus-visible .arrow {
+  transform: translateX(5px);
 }
