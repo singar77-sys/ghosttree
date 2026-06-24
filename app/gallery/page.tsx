@@ -27,7 +27,7 @@ export default function GalleryPage() {
       <JsonLd data={imageGallerySchema} />
       <section className={`wrap ${styles.intro}`}>
         <p className="kicker">Proof in the work</p>
-        <h1 className={styles.h1}>Real jobs. No stock photos.</h1>
+        <h1 className={styles.h1}>Real jobs.</h1>
         <p className={styles.lead}>
           Crane removals, storm damage, tight-access takedowns, and the cleanup that follows. Every photo is a real
           Ghost Tree Service job in Medina County and Northeast Ohio.
