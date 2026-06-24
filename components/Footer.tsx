@@ -58,6 +58,28 @@ export default function Footer() {
         <span className="mono">
           <Link href="/privacy/">Privacy</Link> · 24/7 emergency · {site.phone}
         </span>
+        <a
+          href="https://huntersystems.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.builtBy}
+          aria-label="Built by Hunter Systems — opens in a new tab"
+        >
+          <svg
+            className={styles.hsSigil}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 3.2 L21.5 20.4 L2.5 20.4 Z" />
+            <path d="M12 9 L17 18.2 L7 18.2 Z" />
+            <circle cx="12" cy="15.2" r="1.15" fill="currentColor" stroke="none" />
+          </svg>
+          <span>Built by Hunter Systems</span>
+        </a>
       </div>
     </footer>
   );
