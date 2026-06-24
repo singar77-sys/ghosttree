@@ -120,7 +120,7 @@ export default function AboutPage() {
       </GhostSection>
 
       <section className={`wrap ${styles.rev}`}>
-        <p className="kicker">Real Google proof</p>
+        <p className="kicker">Rated on Google</p>
         <h2>
           {reviewSummary.ratingValue} stars across {reviewSummary.reviewCount} reviews.
         </h2>

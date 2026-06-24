@@ -174,7 +174,7 @@ export default function Home() {
       <section className={`wrap ${styles.section}`} aria-label="Reviews">
         <div className={styles.head}>
           <div>
-            <p className="kicker">Real Google proof</p>
+            <p className="kicker">Rated on Google</p>
             <h2>
               {reviewSummary.ratingValue} stars across {reviewSummary.reviewCount} reviews.
             </h2>
