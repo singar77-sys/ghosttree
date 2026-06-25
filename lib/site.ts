@@ -652,7 +652,7 @@ export const testimonials = [
 
 export const reviewSummary = {
   ratingValue: "5.0",
-  reviewCount: "39",
+  reviewCount: "48",
   sourceLabel: "Google reviews",
   // Google is the canonical review source. Point users at the Google profile,
   // not the Birdeye aggregator (site.reviewSource).

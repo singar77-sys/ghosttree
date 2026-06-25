@@ -25,7 +25,7 @@ Current strengths:
 - Clear 24/7 emergency CTA and phone number.
 - Real job photography, including crane work and storm damage.
 - Authentic "low impact" story and customer testimonials.
-- Strong third-party review signal: 5.0 rating across 39 Google reviews, visible through Birdeye's Google review mirror.
+- Strong third-party review signal: 5.0 rating across 48 Google reviews, visible through Birdeye's Google review mirror.
 - Sitemap exists and public pages are indexable.
 - Service area copy includes Medina County, Summit County, Wayne County, Portage County, and adjacent counties.
 

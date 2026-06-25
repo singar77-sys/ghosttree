@@ -23,7 +23,7 @@ const WORK_PHOTOS = [
 export const metadata: Metadata = {
   title: "About Ghost Tree Service",
   description:
-    "Ghost Tree Service started with a small truck, a trailer, and one rule: treat the customer's property like our own. A low-impact tree crew across Medina County and Northeast Ohio. 5.0 stars across 39 Google reviews.",
+    "Ghost Tree Service started with a small truck, a trailer, and one rule: treat the customer's property like our own. A low-impact tree crew across Medina County and Northeast Ohio. 5.0 stars across 48 Google reviews.",
   alternates: { canonical: "/about/" }
 };
 

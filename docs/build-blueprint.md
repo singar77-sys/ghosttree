@@ -17,7 +17,7 @@
 - **Address:** 6289 Buffham Rd, Seville, OH 44273 (Medina County)
 - **Phone:** (330) 907-6403 → `tel:+13309076403` · **Email:** info@ghosttreeservice.com
 - **Domain (prod):** https://www.ghosttreeservice.com
-- **Proof:** 5.0★ / 39 Google reviews (Birdeye mirror) · real crane/storm job photos · low-impact + cleanup
+- **Proof:** 5.0★ / 48 Google reviews (Birdeye mirror) · real crane/storm job photos · low-impact + cleanup
 - **Service area:** Medina County core (Medina, Brunswick, Wadsworth, Seville, Lodi, Chippewa Lake, Spencer, Westfield Center) + Summit/Wayne/Portage adjacent.
 
 ## Creative Anchor (hunter)
