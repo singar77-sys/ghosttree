@@ -14,10 +14,10 @@ export async function POST(request: Request): Promise<NextResponse> {
         allowedContentTypes: ["image/jpeg", "image/png", "image/webp"],
         maximumSizeInBytes: 8 * 1024 * 1024,
         addRandomSuffix: true
-      }),
-      onUploadCompleted: async () => {
-        // No-op: the client returns the blob URL with the quote payload.
-      }
+      })
+      // No onUploadCompleted: the client already returns the blob URL with the
+      // quote payload, so we skip the completion webhook (one less round-trip
+      // and failure point on the upload).
     });
     return NextResponse.json(result);
   } catch (error) {

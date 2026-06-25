@@ -10,6 +10,9 @@ type Status = "idle" | "sending" | "ok" | "error" | "callus";
 
 const MAX_PHOTOS = 5;
 const MAX_DIM = 1600;
+// Overall budget for the whole photo-upload step. Past this we abort and submit
+// text-only, so a slow or failing Blob upload can never hang the form on "Sending…".
+const UPLOAD_BUDGET_MS = 15000;
 
 // Downscale + re-encode in the browser so we never upload multi-MB phone originals.
 async function compress(file: File): Promise<File> {
@@ -38,14 +41,28 @@ async function compress(file: File): Promise<File> {
 // failure (e.g. Blob not configured yet) is swallowed so the text submission still sends.
 async function uploadPhotos(files: File[]): Promise<string[]> {
   const urls: string[] = [];
-  for (const file of files.slice(0, MAX_PHOTOS)) {
-    try {
-      const ready = await compress(file);
-      const blob = await upload(ready.name, ready, { access: "public", handleUploadUrl: "/api/quote/upload" });
-      urls.push(blob.url);
-    } catch {
-      // skip this photo, keep going
+  // One shared deadline for all photos. If Blob is slow or erroring (the SDK
+  // retries internally), the abort fires and we fall back to a text-only send
+  // instead of leaving the button stuck on "Sending…".
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), UPLOAD_BUDGET_MS);
+  try {
+    for (const file of files.slice(0, MAX_PHOTOS)) {
+      if (controller.signal.aborted) break;
+      try {
+        const ready = await compress(file);
+        const blob = await upload(ready.name, ready, {
+          access: "public",
+          handleUploadUrl: "/api/quote/upload",
+          abortSignal: controller.signal
+        });
+        urls.push(blob.url);
+      } catch {
+        // skip this photo, keep going
+      }
     }
+  } finally {
+    clearTimeout(timer);
   }
   return urls;
 }
