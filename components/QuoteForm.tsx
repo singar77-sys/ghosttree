@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { upload } from "@vercel/blob/client";
 import { track } from "@vercel/analytics";
 import { services, site } from "@/lib/site";
+import { PHOTO_UPLOADS_ENABLED } from "@/lib/flags";
 import styles from "./QuoteForm.module.css";
 
 type Status = "idle" | "sending" | "ok" | "error" | "callus";
@@ -13,10 +14,6 @@ const MAX_DIM = 1600;
 // Overall budget for the whole photo-upload step. Past this we abort and submit
 // text-only, so a slow or failing Blob upload can never hang the form on "Sending…".
 const UPLOAD_BUDGET_MS = 15000;
-// Photo uploads are paused: the Vercel Blob store returns 503 on every PUT, so the
-// form sends text-only. Flip to true once the Blob store is fixed (and an upload
-// actually succeeds) to re-enable the field — the uploadPhotos machinery stays put.
-const PHOTO_UPLOADS_ENABLED = false;
 
 // Downscale + re-encode in the browser so we never upload multi-MB phone originals.
 async function compress(file: File): Promise<File> {
