@@ -142,7 +142,7 @@ export const services: Service[] = [
     summary:
       "Fast response when wind, rain, or a split trunk puts a home, driveway, utility line, or business at risk.",
     details:
-      "When a tree becomes an immediate hazard, the crew evaluates access, rigging angles, landing zones, and remaining canopy risk before removing the danger and clearing the site.",
+      "A tree on the house or across the drive can't wait for a quote next week. We pick up, roll a truck, and work out the safe way down once we're on site. Then it's gone and the yard's clear, day or night.",
     keywords: ["emergency tree removal Medina OH", "24/7 tree service Medina County", "storm damage tree removal"],
     process: [
       { step: "Triage on the call", detail: "We size up the hazard by phone or text photo and tell you whether to evacuate the area while we roll." },
@@ -189,7 +189,7 @@ export const services: Service[] = [
     summary:
       "Dead, leaning, or too close to the house. We take it down clean and crane it out when the yard is tight.",
     details:
-      "The removal plan accounts for crown weight, structure clearance, access lanes, rope paths, crane reach when needed, and full debris cleanup.",
+      "Every removal is its own puzzle: how much the crown weighs, what it can hit coming down, where a truck or crane can reach. We rig it so the wood comes down in pieces instead of a crash, then haul off the wood and chips before we leave.",
     keywords: ["tree removal Medina OH", "tree removal Medina County", "tree cutting service Ohio"],
     process: [
       { step: "On-site estimate", detail: "We walk the tree, check access and what's underneath, and give you a firm written price — no guessing from the curb." },
@@ -237,7 +237,7 @@ export const services: Service[] = [
     summary:
       "Dead limbs over the driveway, branches on the roof, growth into the lines. Cut back for safety and shape.",
     details:
-      "Pruning work removes damaged, dead, low, or overgrown branches while preserving a balanced structure where possible, with attention to clearance near roofs and power lines. For trees worth saving, we also install cables and braces to support weak unions, heavy or overextended limbs, and heritage trees instead of removing them.",
+      "Good pruning takes off the dead, the broken, and the limbs crowding your roof or the lines, and leaves the tree looking like a tree, not a hat rack. When a big tree has a weak fork or a heavy limb you'd rather not lose, we can cable and brace it instead of taking the whole thing down.",
     keywords: ["tree trimming Medina OH", "tree pruning Medina County", "tree cabling and bracing Ohio"],
     process: [
       { step: "Read the canopy", detail: "We look at structure, deadwood, and clearance problems, then agree on how much to take and where to stop." },
@@ -293,7 +293,7 @@ export const services: Service[] = [
     summary:
       "After the storm: downed trees, hung limbs, and debris cleared fast. Hauled, chipped, and raked clean.",
     details:
-      "After high wind or ice, the crew stabilizes hazards first, then removes downed and hanging material, cuts up what's left, and clears the debris so the property is usable again.",
+      "After a storm we handle the dangerous stuff first: the limbs hung up overhead, the leaners resting on a roof or fence. Then we clear the downed wood, cut up what's left, and rake the yard back so you can use it again.",
     keywords: ["storm damage cleanup Medina OH", "storm damage tree removal Medina County", "fallen tree removal Ohio"],
     process: [
       { step: "Stabilize hazards first", detail: "Hung limbs, leaners, and anything under tension get dealt with before general cleanup so no one gets hurt." },
@@ -340,7 +340,7 @@ export const services: Service[] = [
     summary:
       "Brush, scrub, and trees cleared for building, access, or resale — including rotary brush hogging of overgrown fields. Ground prepped at any scale.",
     details:
-      "Lot clearing starts with a practical site review so the right trees, brush, and obstacles are removed before construction or property work begins. For overgrown fields, fence lines, and stands of light saplings, we run a rotary brush hog to mow it all back to usable ground.",
+      "We walk the lot with you and mark what stays and what goes before anything comes down, so a builder or excavator can get right to work. Overgrown fields, fence rows, and thickets of saplings get knocked back to usable ground with a rotary brush hog.",
     keywords: ["lot clearing Medina OH", "land clearing Medina County", "brush hogging Ohio"],
     process: [
       { step: "Walk the site", detail: "We mark what stays, what goes, and where equipment can reach, accounting for slope, wet ground, and property lines." },
@@ -388,7 +388,7 @@ export const services: Service[] = [
     summary:
       "Insured, repeatable tree work for property managers, municipalities, builders, and utility-adjacent accounts.",
     details:
-      "For commercial and municipal accounts the crew brings crane capacity, certificates of insurance, scheduling reliability, and references. Built for repeat work, not one-off calls.",
+      "Property managers, municipalities, and builders need a crew that shows up when it's scheduled and carries the insurance to be on site. We bring that, plus the crane capacity for the big jobs and references from accounts we already run.",
     keywords: ["commercial tree service Medina OH", "municipal tree removal Medina County", "utility tree clearing Ohio"],
     process: [
       { step: "Scope and certify", detail: "We survey the site or portfolio, define scope, and get your required certificates of insurance on file up front." },
