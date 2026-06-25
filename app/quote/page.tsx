@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "Get a Free Tree Service Quote",
   description:
-    "Request a free quote from Ghost Tree Service in Medina County, OH. Tell us about the job, add photos, and we'll call you back. Emergency? Call (330) 907-6403, 24/7.",
+    "Request a free quote from Ghost Tree Service in Medina County, OH. Tell us about the job and we'll call you back. Emergency? Call (330) 907-6403, 24/7.",
   alternates: { canonical: "/quote/" }
 };
 
@@ -20,7 +20,7 @@ export default function QuotePage() {
           <p className="kicker">Free quote</p>
           <h1 className={styles.h1}>Tell us about the tree.</h1>
           <p className={styles.lead}>
-            Send the details, plus a few photos if you have them &mdash; they help us price faster. We&rsquo;ll call you back with a clear price. Free, no obligation.
+            Send the details and we&rsquo;ll call you back with a clear price. Free, no obligation.
             Storm emergency? Don&rsquo;t wait on a form. Call or text <a href={site.phoneHref}>{site.phone}</a>, 24/7.
           </p>
           <a href={site.phoneHref} className="btn btn-call">
