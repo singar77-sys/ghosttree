@@ -16,13 +16,13 @@ Add these for **Production** (and Preview if you want preview deploys to send to
 | Name | Value | Required? |
 |---|---|---|
 | `RESEND_API_KEY` | `re_...` (from Resend → API Keys) | **Yes** — without it the quote form just tells visitors to call. |
-| `QUOTE_TO_EMAIL` | `logan@ghosttreeservice.com` | Optional — defaults to `info@ghosttreeservice.com`. This is where quote requests land. |
+| `QUOTE_TO_EMAIL` | `info@ghosttreeservice.com` | Optional — this is already the default, so you can leave it unset. Where quote requests land. Must be a real Workspace mailbox: `info@` exists, `logan@` does **not** — never point it at logan@ or every lead bounces. |
 | `QUOTE_FROM_EMAIL` | `Ghost Tree Quotes <quotes@ghosttreeservice.com>` | Optional — this is the default. The address must be at a domain verified in Resend (step 2). |
 | `BLOB_READ_WRITE_TOKEN` | auto-added when you create a Vercel Blob store | Optional — enables quote-form photo uploads. Without it the form silently submits text-only. Create a **Blob store** under Storage and connect it to the project. |
 
 Notes:
 - After adding/changing env vars, trigger a new deploy (they're baked at build/runtime per Vercel).
-- `QUOTE_TO_EMAIL` can be a real Workspace mailbox or an alias — just make sure it exists and you watch it.
+- `QUOTE_TO_EMAIL` must be a real Workspace mailbox or alias. `info@ghosttreeservice.com` exists; `logan@ghosttreeservice.com` does **not** — sending there bounces silently. Leave the var unset (it defaults to info@) or set it explicitly to info@.
 
 ---
 
